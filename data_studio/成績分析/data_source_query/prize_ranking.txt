@@ -70,6 +70,7 @@ select
     ntile_main_praze,
     ntile_IDM,
     ntile_uptone_index,
+    ntile_rank_in_flag,
     max(main_praze) over (partition by ntile_main_praze) ntile_main_praze_max,
     max(IDM) over (partition by ntile_IDM) ntile_IDM_max,
     max(uptone_index) over (partition by ntile_uptone_index) ntile_uptone_index_max,
