@@ -1,0 +1,88 @@
+with ukc as (
+    select distinct
+        register_no,
+        birthday,
+        sex,
+        horse_name
+    from
+        `yu-it-base.jrdb_raw_data.a_ukc` 
+),kza as (
+    select distinct
+        jockey_code,
+        first_licence_date,
+        jockey_name
+    from
+        `yu-it-base.jrdb_raw_data.a_kza` 
+)    
+select
+    ukc.register_no,
+    ukc.horse_name,
+    ukc.birthday,
+    case 
+        when 
+            ukc.sex = 1 then 'male'
+        when 
+            ukc.sex = 2 then 'female'
+        when 
+            ukc.sex = 3 then 'half'
+        else
+            'unkown'
+        end as sex,
+    kza.jockey_code,
+    kza.jockey_name,
+    kza.first_licence_date,
+    datetime
+        (
+            extract(year from bac.date),
+            extract(month from bac.date),
+            extract(day from bac.date),
+            cast(substr(format("%04d", bac.time_to_start),1,2) as int64),
+            cast(substr(format("%04d", bac.time_to_start),3,2) as int64),
+            0
+        ) race_datetime,
+    sed.race_key_round,
+    sed.race_condition_race_name,
+    sed.race_key_place_code,
+    sed.horse_no,
+    sed.main_praze,
+    sed.race_condition_condition,
+    sed.horse_performance_order,
+    case 
+        when 
+            sed.horse_performance_order = '1' then 1
+        else 0
+        end as first_flag,
+    case 
+        when 
+            sed.horse_performance_order = '2' then 1
+        else 0
+        end as second_flag,
+    case 
+        when 
+            sed.horse_performance_order = '3' then 1
+        else 0
+        end as third_flag,
+    case 
+        when 
+            sed.horse_performance_order <= '3' then 1
+        else 0
+        end as rank_in_flag
+from
+    `yu-it-base.jrdb_raw_data.a_sed` sed
+    inner join ukc
+        on sed.performance_key_register_no = cast(ukc.register_no as int64)
+    inner join kza
+        on sed.jockey_code = kza.jockey_code
+    inner join `yu-it-base.jrdb_raw_data.a_kyi` kyi
+        on sed.race_key_place_code = kyi.race_key_place_code
+       and sed.race_key_year = kyi.race_key_year
+       and sed.race_key_no = kyi.race_key_no
+       and sed.race_key_day = kyi.race_key_day
+       and sed.race_key_round = kyi.race_key_round
+       and sed.horse_no = kyi.horse_no
+    inner join `yu-it-base.jrdb_raw_data.a_bac` bac
+        on sed.race_key_place_code = bac.race_key_place_code
+            and sed.race_key_year = bac.race_key_year
+            and sed.race_key_no = bac.race_key_no
+            and sed.race_key_day = bac.race_key_day
+            and sed.race_key_round = bac.race_key_round

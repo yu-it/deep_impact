@@ -1,0 +1,140 @@
+with ukc as (
+    select distinct
+        register_no,
+        horse_name,
+        sex,
+        birthday
+    from
+        `yu-it-base.jrdb_raw_data.a_ukc` 
+), horse_performance as (
+    select
+        ukc.register_no,
+        ukc.horse_name,
+        ukc.birthday,
+        ukc.sex,
+        sum(sed.main_praze) main_praze,
+        avg(kyi.IDM) IDM,
+        --avg(kyi.info_index)info_index,
+        --avg(kyi.comprehension_index)comprehension_index,
+        avg(kyi.uptone_index)uptone_index,
+        --avg(kyi.reputation_index)reputation_index,
+        --avg(kyi.torture_index)torture_index,
+        --avg(kyi.stable_index)stable_index,
+        avg(kyi.passion_index)passion_index,
+        /*
+        sum(case 
+            when 
+                sed.horse_performance_order = '1' then 1
+            else 0
+            end) as first_flag,
+        sum(case 
+            when 
+                sed.horse_performance_order = '2' then 1
+            else 0
+            end)  as second_flag,
+        sum(case 
+            when 
+                sed.horse_performance_order = '3' then 1
+            else 0
+            end) as third_flag,
+        */
+        sum(case 
+            when 
+                sed.horse_performance_order <= '3' then 1
+            else 0
+            end) as rank_in_flag
+    from
+        `yu-it-base.jrdb_raw_data.a_sed` sed
+        inner join ukc
+            on sed.performance_key_register_no = cast(ukc.register_no as int64)
+        inner join `yu-it-base.jrdb_raw_data.a_kyi` kyi
+            on sed.race_key_place_code = kyi.race_key_place_code
+                and sed.race_key_year = kyi.race_key_year
+                and sed.race_key_no = kyi.race_key_no
+                and sed.race_key_day = kyi.race_key_day
+                and sed.race_key_round = kyi.race_key_round
+                and sed.horse_no = kyi.horse_no
+    group by ukc.register_no,ukc.register_no,ukc.horse_name,ukc.birthday,ukc.sex
+)
+select
+    register_no,
+    horse_name,
+    birthday,
+    sex,
+    race_datetime,
+    main_praze,
+    IDM,
+    uptone_index,
+    passion_index,
+    rank_in_flag,
+    ntile_main_praze,
+    ntile_IDM,
+    ntile_uptone_index,
+    max(main_praze) over (partition by ntile_main_praze) ntile_main_praze_max,
+    max(IDM) over (partition by ntile_IDM) ntile_IDM_max,
+    max(uptone_index) over (partition by ntile_uptone_index) ntile_uptone_index_max,
+    max(rank_in_flag) over (partition by ntile_rank_in_flag) ntile_rank_in_flag_max,
+    min(main_praze) over (partition by ntile_main_praze) ntile_main_praze_min,
+    min(IDM) over (partition by ntile_IDM) ntile_IDM_min,
+    min(uptone_index) over (partition by ntile_uptone_index) ntile_uptone_index_min,
+    min(rank_in_flag) over (partition by ntile_rank_in_flag) ntile_rank_in_flag_min
+from 
+    (
+        select
+            horse_per.register_no,
+            horse_per.horse_name,
+            horse_per.birthday,
+            case 
+                when 
+                    horse_per.sex = 1 then 'male'
+                when 
+                    horse_per.sex = 2 then 'female'
+                when 
+                    horse_per.sex = 3 then 'half'
+                else
+                    'unkown'
+                end as sex,
+            datetime
+                (
+                    extract(year from bac.date),
+                    extract(month from bac.date),
+                    extract(day from bac.date),
+                    cast(substr(format("%04d", bac.time_to_start),1,2) as int64),
+                    cast(substr(format("%04d", bac.time_to_start),3,2) as int64),
+                    0
+                ) race_datetime,
+            horse_per.main_praze,
+            horse_per.IDM,
+            --horse_per.info_index,
+            --horse_per.comprehension_index,
+            horse_per.uptone_index,
+            --horse_per.reputation_index,
+            --horse_per.torture_index,
+            --horse_per.stable_index,
+            horse_per.passion_index,
+            --horse_per.first_flag,
+            --horse_per.second_flag,
+            --horse_per.third_flag,
+            horse_per.rank_in_flag,
+            ntile(10) over (order by horse_per.main_praze) ntile_main_praze,
+            ntile(10) over (order by horse_per.IDM) ntile_IDM,
+            ntile(10) over (order by horse_per.uptone_index) ntile_uptone_index,
+            --ntile(10) over (order by horse_per.reputation_index) ntile_reputation_index,
+            --ntile(10) over (order by horse_per.torture_index) ntile_torture_index,
+            --ntile(10) over (order by horse_per.stable_index) ntile_stable_index,
+            ntile(10) over (order by horse_per.passion_index) ntile_passion_index,/*
+            --ntile(10) over (order by horse_per.first_flag) ntile_first_flag,
+            --ntile(10) over (order by horse_per.second_flag) ntile_second_flag,
+            --ntile(10) over (order by horse_per.third_flag) ntile_third_flag,*/
+            ntile(10) over (order by horse_per.rank_in_flag) ntile_rank_in_flag
+        from
+            `yu-it-base.jrdb_raw_data.a_sed` sed
+            inner join horse_performance horse_per
+                on sed.performance_key_register_no = cast(horse_per.register_no as int64)
+            inner join `yu-it-base.jrdb_raw_data.a_bac` bac
+                on sed.race_key_place_code = bac.race_key_place_code
+               and sed.race_key_year = bac.race_key_year
+               and sed.race_key_no = bac.race_key_no
+               and sed.race_key_day = bac.race_key_day
+               and sed.race_key_round = bac.race_key_round
+    )

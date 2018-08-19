@@ -1,0 +1,9 @@
+create table `yu-it-base.jrdb_raw_data.statistics`(
+ table_name string,
+ column_name string,
+ stat_name string,
+ num int64,
+ val1 string,
+ val2 string
+)
+
