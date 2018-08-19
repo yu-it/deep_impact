@@ -12,6 +12,8 @@ with ukc as (
         ukc.horse_name,
         ukc.birthday,
         ukc.sex,
+        concat(cast(extract(year from sed.performance_key_date) as string), ' ', cast(floor((extract(month from sed.performance_key_date) - 1)/4) as string)) season,
+        count(1) cnt,
         sum(sed.main_praze * 10) main_praze,
         avg(kyi.IDM) IDM,
         --avg(kyi.info_index)info_index,
@@ -40,7 +42,7 @@ with ukc as (
         */
         sum(case 
             when 
-                sed.horse_performance_order <= '3' then 1
+                cast(sed.horse_performance_order as int64) <= 3 then 1
             else 0
             end) as rank_in_flag
     from
@@ -54,15 +56,17 @@ with ukc as (
                 and sed.race_key_day = kyi.race_key_day
                 and sed.race_key_round = kyi.race_key_round
                 and sed.horse_no = kyi.horse_no
-    group by ukc.register_no,ukc.register_no,ukc.horse_name,ukc.birthday,ukc.sex
+    group by ukc.register_no,ukc.register_no,ukc.horse_name,ukc.birthday,ukc.sex, 
+    concat(cast(extract(year from sed.performance_key_date) as string), ' ', cast(floor((extract(month from sed.performance_key_date) - 1)/4) as string)) 
 )
 select
     register_no,
     horse_name,
     birthday,
     sex,
-    race_datetime,
     main_praze,
+    season,
+    cnt,
     IDM,
     uptone_index,
     passion_index,
@@ -95,15 +99,8 @@ from
                 else
                     'unkown'
                 end as sex,
-            datetime
-                (
-                    extract(year from bac.date),
-                    extract(month from bac.date),
-                    extract(day from bac.date),
-                    cast(substr(format("%04d", bac.time_to_start),1,2) as int64),
-                    cast(substr(format("%04d", bac.time_to_start),3,2) as int64),
-                    0
-                ) race_datetime,
+            horse_per.cnt,
+            horse_per.season,
             horse_per.main_praze,
             horse_per.IDM,
             --horse_per.info_index,
@@ -129,13 +126,5 @@ from
             --ntile(10) over (order by horse_per.third_flag) ntile_third_flag,*/
             ntile(10) over (order by horse_per.rank_in_flag) ntile_rank_in_flag
         from
-            `yu-it-base.jrdb_raw_data.a_sed` sed
-            inner join horse_performance horse_per
-                on sed.performance_key_register_no = cast(horse_per.register_no as int64)
-            inner join `yu-it-base.jrdb_raw_data.a_bac` bac
-                on sed.race_key_place_code = bac.race_key_place_code
-               and sed.race_key_year = bac.race_key_year
-               and sed.race_key_no = bac.race_key_no
-               and sed.race_key_day = bac.race_key_day
-               and sed.race_key_round = bac.race_key_round
+            horse_performance horse_per
     )

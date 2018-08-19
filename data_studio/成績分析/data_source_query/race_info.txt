@@ -1,0 +1,21 @@
+select 
+    bac.date,
+    bac.race_key_place_code,
+    bac.race_key_round,
+    bac.time_to_start,
+    STRING_AGG(format("%08d",register_no), "%25EE%2580%2580") over (partition by bac.date,bac.race_key_place_code,bac.race_key_round ) link_key,
+    race_name,
+    horse_no,
+    horse_name,
+    jockey_code,
+    jockey_name
+from 
+    `yu-it-base.jrdb_raw_data.a_kyi` kyi
+    inner join `yu-it-base.jrdb_raw_data.a_bac` bac
+    on
+        kyi.race_key_place_code = bac.race_key_place_code 
+        and kyi.race_key_year = bac.race_key_year
+        and kyi.race_key_no = bac.race_key_no
+        and kyi.race_key_day = bac.race_key_day
+        and kyi.race_key_round = bac.race_key_round
+
