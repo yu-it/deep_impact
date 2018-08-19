@@ -12,7 +12,7 @@ with ukc as (
         ukc.horse_name,
         ukc.birthday,
         ukc.sex,
-        sum(sed.main_praze) main_praze,
+        sum(sed.main_praze * 10) main_praze,
         avg(kyi.IDM) IDM,
         --avg(kyi.info_index)info_index,
         --avg(kyi.comprehension_index)comprehension_index,
