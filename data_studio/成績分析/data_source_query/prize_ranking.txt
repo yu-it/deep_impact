@@ -12,7 +12,7 @@ with ukc as (
         ukc.horse_name,
         ukc.birthday,
         ukc.sex,
-        concat(cast(extract(year from sed.performance_key_date) as string), ' ', cast(floor((extract(month from sed.performance_key_date) - 1)/4) as string)) season,
+        cast(extract(year from max(sed.performance_key_date)) as string) generation, --‘å‘Ì‚¢‚Â‚­‚ç‚¢‚Ì¢‘ã‚Ì”n‚©‚ğ’m‚é‚½‚ß‚Ì–ÚˆÀB
         count(1) cnt,
         sum(sed.main_praze * 10) main_praze,
         avg(kyi.IDM) IDM,
@@ -56,8 +56,7 @@ with ukc as (
                 and sed.race_key_day = kyi.race_key_day
                 and sed.race_key_round = kyi.race_key_round
                 and sed.horse_no = kyi.horse_no
-    group by ukc.register_no,ukc.register_no,ukc.horse_name,ukc.birthday,ukc.sex, 
-    concat(cast(extract(year from sed.performance_key_date) as string), ' ', cast(floor((extract(month from sed.performance_key_date) - 1)/4) as string)) 
+    group by ukc.register_no,ukc.register_no,ukc.horse_name,ukc.birthday,ukc.sex
 )
 select
     register_no,
@@ -65,7 +64,7 @@ select
     birthday,
     sex,
     main_praze,
-    season,
+    generation,
     cnt,
     IDM,
     uptone_index,
@@ -100,7 +99,7 @@ from
                     'unkown'
                 end as sex,
             horse_per.cnt,
-            horse_per.season,
+            horse_per.generation,
             horse_per.main_praze,
             horse_per.IDM,
             --horse_per.info_index,

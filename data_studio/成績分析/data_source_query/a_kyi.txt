@@ -1,0 +1,25 @@
+select 
+    race_key_place_code,
+    race_key_year,
+    race_key_no,
+    race_key_day,
+    race_key_round,
+    horse_no,
+    horse_name,
+    jockey_name,
+    IDM,
+    comprehension_index,
+    leg_status,
+    distance_apptitude,
+    uptone_index,
+    basis_reputation_order,
+    reputation_index,
+    torture_index,
+    stable_index,
+    torture_arrow_code,
+    stable_reputation_code,
+    jockey_anticipated_serial_rate,
+    passion_index,
+    load_weight
+from 
+    `yu-it-base.jrdb_raw_data.a_kyi`

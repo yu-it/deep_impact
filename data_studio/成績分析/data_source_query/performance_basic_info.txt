@@ -31,6 +31,7 @@ select
     kza.jockey_code,
     kza.jockey_name,
     kza.first_licence_date,
+    bac.date,
     datetime
         (
             extract(year from bac.date),
