@@ -1,0 +1,11 @@
+[
+    {"type":"STRING","name":"table_name","mode":"NULLABLE"},
+    {"type":"STRING","name":"column_pysical_name","mode":"NULLABLE"},
+    {"type":"STRING","name":"column_logical_name","mode":"NULLABLE"},
+    {"type":"INTEGER","name":"seq","mode":"NULLABLE"},
+    {"type":"INTEGER","name":"length","mode":"NULLABLE"},
+    {"type":"INTEGER","name":"start_position","mode":"NULLABLE"},
+    {"type":"STRING","name":"note","mode":"NULLABLE"},
+    {"type":"STRING","name":"type","mode":"NULLABLE"},
+    {"type":"STRING","name":"original_translation","mode":"NULLABLE"}
+]
