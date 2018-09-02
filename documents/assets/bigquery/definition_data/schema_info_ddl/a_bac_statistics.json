@@ -1,0 +1,8 @@
+[
+    {"type":"STRING","name":"table_name"},
+    {"type":"STRING","name":"column_name"},
+    {"type":"STRING","name":"stat_name"},
+    {"type":"INTEGER","name":"num"},
+    {"type":"STRING","name":"val1"},
+    {"type":"STRING","name":"val2"}
+]

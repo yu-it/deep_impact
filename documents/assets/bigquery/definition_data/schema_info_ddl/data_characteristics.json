@@ -7,5 +7,8 @@
     {"type":"INTEGER","name":"start_position","mode":"NULLABLE"},
     {"type":"STRING","name":"note","mode":"NULLABLE"},
     {"type":"STRING","name":"type","mode":"NULLABLE"},
+    {"type":"STRING","name":"allow_zero","mode":"NULLABLE"},
+    {"type":"STRING","name":"illegal_value_definition","mode":"NULLABLE"},
+    {"type":"STRING","name":"illegal_value_condition","mode":"NULLABLE"},
     {"type":"STRING","name":"original_translation","mode":"NULLABLE"}
 ]
