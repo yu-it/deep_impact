@@ -1,0 +1,13 @@
+[
+    {"name":"table_name","type":"string", "mode":"nullable"},
+    {"name":"column_pysical_name","type":"string", "mode":"nullable"},
+    {"name":"column_logical_name","type":"string", "mode":"nullable"},
+    {"name":"seq","type":"integer", "mode":"nullable"},
+    {"name":"length","type":"integer", "mode":"nullable"},
+    {"name":"start_position","type":"integer", "mode":"nullable"},
+    {"name":"note","type":"string", "mode":"nullable"},
+    {"name":"type","type":"string", "mode":"nullable"},
+    {"name":"allow_zero","type":"string", "mode":"nullable"},
+    {"name":"illegal_value_definition","type":"string", "mode":"nullable"},
+    {"name":"illegal_value_condition","type":"string", "mode":"nullable"},
+    {"name":"original_translation","type":"string", "mode":"nullable"}]
