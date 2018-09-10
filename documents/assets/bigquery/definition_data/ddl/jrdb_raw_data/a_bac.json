@@ -33,5 +33,6 @@
     {"name":"sold_flag","type":"string", "mode":"nullable"},
     {"name":"win5flag","type":"string", "mode":"nullable"},
     {"name":"reserve","type":"string", "mode":"nullable"},
+    {"name":"__partitioning_date","type":"date", "mode":"nullable"},
     {"name":"distributed_date","type":"datetime", "mode":"nullable"}
 ]

@@ -81,5 +81,6 @@
     {"name":"horse_pace_fluent","type":"string", "mode":"nullable"},
     {"name":"fourth_corner_catching","type":"string", "mode":"nullable"},
     {"name":"reserve_2","type":"string", "mode":"nullable"},
+    {"name":"__partitioning_date","type":"date", "mode":"nullable"},
     {"name":"distributed_date","type":"datetime", "mode":"nullable"}
 ]

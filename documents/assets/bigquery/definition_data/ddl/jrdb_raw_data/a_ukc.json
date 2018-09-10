@@ -20,4 +20,5 @@
     {"name":"father_series_code","type":"string", "mode":"nullable"},
     {"name":"parent_series_code","type":"string", "mode":"nullable"},
     {"name":"reserve","type":"string", "mode":"nullable"},
+    {"name":"__partitioning_date","type":"date", "mode":"nullable"},
     {"name":"distributed_date","type":"datetime", "mode":"nullable"}]
