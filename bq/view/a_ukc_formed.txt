@@ -1,0 +1,17 @@
+select main.* from `yu-it-base.jrdb_raw_data.a_ukc` main
+inner join (
+  select 
+    register_no,
+    min(data_date) data_date_min,
+    min(distributed_date) dist_date_min
+  from 
+    `yu-it-base.jrdb_raw_data.a_ukc`
+  group by 
+    register_no
+)keys 
+on
+  main.register_no = keys.register_no
+  and main.data_date = keys.data_date_min
+  and main.distributed_date = keys.dist_date_min
+  
+#ŒŒ““o˜^”Ô†‚ÅˆêˆÓ‚É•ÏŠ·‚·‚éB

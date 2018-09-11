@@ -1,2 +1,0 @@
-
-C:\github\deep_impact_2_7\dataflows\gcs_at_local\inputs\#local_jrdb\a_kza.csv
