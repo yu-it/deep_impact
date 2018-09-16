@@ -1,0 +1,47 @@
+select
+    concat(format_datetime("%F",bac.date),"_",kyi.race_key_place_code,kyi.race_key_round) as primary_key,
+    kyi.race_key_place_code,
+    kyi.race_key_year,
+    kyi.race_key_no,
+    kyi.race_key_day,
+    kyi.race_key_round,
+    max(bac.race_condition_distance) as race_condition_distance_max,
+    min(bac.race_condition_distance) as race_condition_distance_min,
+    max(bac.horse_count) as horse_count_max,
+    min(bac.horse_count) as horse_count_min,
+    max(kyi.IDM) as IDM_max,
+    min(kyi.IDM) as IDM_min,
+    max(kyi.jockey_index) as jockey_index_max,
+    min(kyi.jockey_index) as jockey_index_min,
+    max(kyi.info_index) as info_index_max,
+    min(kyi.info_index) as info_index_min,
+    max(kyi.comprehension_index) as comprehension_index_max,
+    min(kyi.comprehension_index) as comprehension_index_min,
+    max(kyi.torture_index) as torture_index_max,
+    min(kyi.torture_index) as torture_index_min,
+    max(kyi.passion_index) as passion_index_max,
+    min(kyi.passion_index) as passion_index_min,
+    max(kyi.load_weight) as load_weight_max,
+    min(kyi.load_weight) as load_weight_min,
+    max(kyi.prize_info_obtain_prize) as prize_info_obtain_prize_max,
+    min(kyi.prize_info_obtain_prize) as prize_info_obtain_prize_min
+from
+`yu-it-base.jrdb_raw_data.a_bac` bac
+inner join `yu-it-base.jrdb_raw_data.a_kab` kab  on
+    bac.partitioning_date = kab.partitioning_date
+    and bac.race_key_place_code = kab.held_key_place_code
+inner join `yu-it-base.jrdb_raw_data.a_kyi` kyi  on
+    bac.partitioning_date = kyi.partitioning_date
+    and bac.race_key_place_code = kyi.race_key_place_code
+    and bac.race_key_round = kyi.race_key_round
+inner join  `yu-it-base.jrdb_raw_data_schema_info.category_mst` cat_place
+    on
+    cat_place.table_name = 'a_kyi' and cat_place.column_pysical_name = 'race_key_place_code'
+    and cat_place.category = kyi.race_key_place_code 
+inner join `yu-it-base.jrdb_raw_data.a_sed` sed  on
+    bac.partitioning_date = sed.partitioning_date
+    and bac.race_key_place_code = sed.race_key_place_code
+    and bac.race_key_round = sed.race_key_round
+    and kyi.horse_no = sed.horse_no
+group by concat(format_datetime("%F",bac.date),"_",kyi.race_key_place_code,kyi.race_key_round) ,kyi.race_key_place_code,kyi.race_key_year,kyi.race_key_no,kyi.race_key_day,kyi.race_key_round
+
