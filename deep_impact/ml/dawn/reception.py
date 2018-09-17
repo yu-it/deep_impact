@@ -29,6 +29,8 @@ if __name__ == '__main__':
         default = r"C:\github\deep_impact\bq\#local\models\dawn"
     )
     args = parser.parse_args()
-    #input_processor_test(args)
+    #model.input_processor_test(args)
+
+    #model.input_processor_test_new_func(args)
     #model.input_processor_test(args)
     model.train(args)

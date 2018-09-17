@@ -3,4 +3,5 @@ select * from `yu-it-base.jrdb_raw_data_schema_info.a_kab_stats` union all
 select * from `yu-it-base.jrdb_raw_data_schema_info.a_kyi_stats` union all
 select * from `yu-it-base.jrdb_raw_data_schema_info.a_kza_stats` union all
 select * from `yu-it-base.jrdb_raw_data_schema_info.a_sed_stats` union all
-select * from `yu-it-base.jrdb_raw_data_schema_info.a_ukc_stats`
+select * from `yu-it-base.jrdb_raw_data_schema_info.a_ukc_stats` union all
+select * from `yu-it-base.jrdb_raw_data_schema_info.a_tyb_stats`
