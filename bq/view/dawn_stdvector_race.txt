@@ -1,0 +1,7 @@
+select
+max(bac.race_condition_distance) as race_condition_distance_max,
+min(bac.race_condition_distance) as race_condition_distance_min,
+max(bac.horse_count) as horse_count_max,
+min(bac.horse_count) as horse_count_min,
+from
+`yu-it-base.jrdb_raw_data.a_bac` bac

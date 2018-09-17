@@ -6,14 +6,14 @@ if __name__ == '__main__':
         '--train-files',
         help='GCS or local paths',
         required=False,
-        default=r"C:\github\deep_impact\bq\#local\dawn_modeldata_m.csv"
+        default=r"C:\github\deep_impact\bq\#local\dawn_stddataset_m.csv"
         #default=r"C:\github\deep_impact\bq\#local\dawn_modeldata_m_micro_test.csv"
     )
     parser.add_argument(
         '--eval-files',
         help='GCS or local paths',
         required=False,
-        default=r"C:\github\deep_impact\bq\#local\dawn_modeldata_m.csv"
+        default=r"C:\github\deep_impact\bq\#local\dawn_stddataset_m.csv"
         #default=r"C:\github\deep_impact\bq\#local\dawn_modeldata_m_micro_test.csv"
     )
     parser.add_argument(

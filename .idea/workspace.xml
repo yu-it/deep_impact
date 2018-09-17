@@ -2,14 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="05812a30-f91e-435a-a738-3ac57b844c70" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/deep_impact/ml/dawn/model/vector_definition.py" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/deep_impact/ml/vector_parser.py" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/bq/view/all_stats.txt" afterPath="$PROJECT_DIR$/bq/view/all_stats.txt" />
+      <change beforePath="$PROJECT_DIR$/bq/view/dawn_modeldata.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/bq/view/dawn_rawdataset.txt" afterPath="$PROJECT_DIR$/bq/view/dawn_rawdataset.txt" />
+      <change beforePath="$PROJECT_DIR$/bq/view/dawn_stddataset.txt" afterPath="$PROJECT_DIR$/bq/view/dawn_stddataset.txt" />
       <change beforePath="$PROJECT_DIR$/deep_impact/ml/dawn/model/model.py" afterPath="$PROJECT_DIR$/deep_impact/ml/dawn/model/model.py" />
+      <change beforePath="$PROJECT_DIR$/deep_impact/ml/dawn/model/vector_definition.py" afterPath="$PROJECT_DIR$/deep_impact/ml/dawn/model/vector_definition.py" />
       <change beforePath="$PROJECT_DIR$/deep_impact/ml/dawn/reception.py" afterPath="$PROJECT_DIR$/deep_impact/ml/dawn/reception.py" />
-      <change beforePath="$PROJECT_DIR$/documents/assets/bigquery/definition_data/csv/data_characteristics.csv" afterPath="$PROJECT_DIR$/documents/assets/bigquery/definition_data/csv/data_characteristics.csv" />
       <change beforePath="$PROJECT_DIR$/documents/data_characteristics.xlsm" afterPath="$PROJECT_DIR$/documents/data_characteristics.xlsm" />
+      <change beforePath="$PROJECT_DIR$/documents/vector_characteristics.xlsx" afterPath="$PROJECT_DIR$/documents/vector_characteristics.xlsx" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -33,11 +33,21 @@
       <file leaf-file-name="model.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/deep_impact/ml/dawn/model/model.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="364">
-              <caret line="51" column="17" lean-forward="false" selection-start-line="51" selection-start-column="17" selection-end-line="51" selection-end-column="17" />
+            <state relative-caret-position="265">
+              <caret line="78" column="0" lean-forward="false" selection-start-line="75" selection-start-column="0" selection-end-line="78" selection-end-column="0" />
               <folding>
                 <element signature="e#24#34#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="__init__.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/deep_impact/ml/dawn/__init__.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -55,11 +65,11 @@
       <file leaf-file-name="vector_definition.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/deep_impact/ml/dawn/model/vector_definition.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="462">
-              <caret line="430" column="53" lean-forward="false" selection-start-line="430" selection-start-column="53" selection-end-line="430" selection-end-column="53" />
+            <state relative-caret-position="199">
+              <caret line="1592" column="43" lean-forward="false" selection-start-line="1592" selection-start-column="43" selection-end-line="1592" selection-end-column="43" />
               <folding>
                 <element signature="e#24#47#0" expanded="true" />
-                <element signature="e#29644#66326#0" expanded="false" />
+                <element signature="e#135#29629#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -95,16 +105,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="head.py" pinned="false" current-in-tab="false">
-        <entry file="file://$USER_HOME$/Anaconda3/envs/tensorflow_env/Lib/site-packages/tensorflow/python/estimator/canned/head.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="21450">
-              <caret line="680" column="0" lean-forward="false" selection-start-line="680" selection-start-column="0" selection-end-line="680" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="training.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ml/gcp/sample2/training.py">
           <provider selected="true" editor-type-id="text-editor">
@@ -120,8 +120,8 @@
       <file leaf-file-name="reception.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/deep_impact/ml/dawn/reception.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state relative-caret-position="892">
+              <caret line="36" column="0" lean-forward="false" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
               <folding>
                 <element signature="e#0#15#0" expanded="true" />
               </folding>
@@ -163,18 +163,18 @@
         <option value="$PROJECT_DIR$/ml/gcp/sample3/training.py" />
         <option value="$PROJECT_DIR$/dataflows/statistics/analyze_task.py" />
         <option value="$PROJECT_DIR$/../deep_impact_2_7/dataflows/statistics/analyze_task.py" />
-        <option value="$PROJECT_DIR$/deep_impact/ml/dawn/model/vector_definition.py" />
         <option value="$PROJECT_DIR$/deep_impact/ml/vector_parser.py" />
+        <option value="$PROJECT_DIR$/deep_impact/ml/dawn/model/vector_definition.py" />
         <option value="$PROJECT_DIR$/deep_impact/ml/dawn/reception.py" />
         <option value="$PROJECT_DIR$/deep_impact/ml/dawn/model/model.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="1324" />
-    <option name="y" value="298" />
+    <option name="x" value="1224" />
+    <option name="y" value="123" />
     <option name="width" value="1390" />
-    <option name="height" value="1552" />
+    <option name="height" value="1755" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -273,7 +273,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../deep_impact_2_7" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -378,7 +378,7 @@
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3297055" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3297055" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -801,21 +801,29 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/deep_impact/ml/dawn/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/deep_impact/ml/dawn/model/vector_definition.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="462">
-          <caret line="430" column="53" lean-forward="false" selection-start-line="430" selection-start-column="53" selection-end-line="430" selection-end-column="53" />
+        <state relative-caret-position="199">
+          <caret line="1592" column="43" lean-forward="false" selection-start-line="1592" selection-start-column="43" selection-end-line="1592" selection-end-column="43" />
           <folding>
             <element signature="e#24#47#0" expanded="true" />
-            <element signature="e#29644#66326#0" expanded="false" />
+            <element signature="e#135#29629#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/deep_impact/ml/dawn/reception.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state relative-caret-position="892">
+          <caret line="36" column="0" lean-forward="false" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
           <folding>
             <element signature="e#0#15#0" expanded="true" />
           </folding>
@@ -824,8 +832,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/deep_impact/ml/dawn/model/model.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="364">
-          <caret line="51" column="17" lean-forward="false" selection-start-line="51" selection-start-column="17" selection-end-line="51" selection-end-column="17" />
+        <state relative-caret-position="265">
+          <caret line="78" column="0" lean-forward="false" selection-start-line="75" selection-start-column="0" selection-end-line="78" selection-end-column="0" />
           <folding>
             <element signature="e#24#34#0" expanded="true" />
           </folding>
