@@ -73,12 +73,12 @@ def train(args):
 
     features = vector_parser.extract_features(vector_definition.definition)
 
-    model = tf.estimator.DNNClassifier(feature_columns=features, hidden_units=[4096, 512],
+    model = tf.estimator.DNNClassifier(feature_columns=features, hidden_units=[2048, 512],
                                        optimizer=tf.train.AdamOptimizer(1e-4), n_classes=19, activation_fn=tf.sigmoid,
-                                       dropout=0.1, model_dir=args.output)  # 6.82
+                                       dropout=0.3, model_dir=args.output)  # 6.82
 
     train_spec = tf.estimator.TrainSpec(input_fn,
-                                        max_steps=10000
+                                        max_steps=50000
                                         )
     exporter = tf.estimator.FinalExporter('dawn',
                                           serving_fn_lambda)
