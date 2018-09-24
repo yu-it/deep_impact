@@ -318,7 +318,9 @@ max(case when sed.horse_no = kyi.horse_no then reference_start_index else null e
 max(case when sed.horse_no = kyi.horse_no then reference_rate_of_delay else null end) as reference_rate_of_delay_no1_horse,
 max(case when sed.horse_no = kyi.horse_no then million_index else null end) as million_index_no1_horse,
 max(case when sed.horse_no = kyi.horse_no then apprenticeship_round_count else null end) as apprenticeship_round_count_no1_horse,
-max(case when sed.horse_no = kyi.horse_no then apprenticeship_day_count else null end) as apprenticeship_day_count_no1_horse
+max(case when sed.horse_no = kyi.horse_no then apprenticeship_day_count else null end) as apprenticeship_day_count_no1_horse,
+case when max(IDM) = max(case when sed.horse_no = kyi.horse_no then IDM else null end) then 1 else 0 end as IDM_correct_flag,
+case when max(IDM) = max(case when sed.horse_no = kyi.horse_no then IDM else null end) then max(refunds_single) else 0 end as IDM_base_obtain
 from
 `yu-it-base.jrdb_raw_data.a_bac` bac
 inner join `yu-it-base.jrdb_raw_data.a_kab` kab  on
