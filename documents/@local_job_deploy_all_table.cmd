@@ -1,0 +1,7 @@
+call "@local_job_deploy_a_ukc.cmd"
+call "@local_job_deploy_a_bac.cmd"
+call "@local_job_deploy_a_kab.cmd"
+call "@local_job_deploy_a_kyi.cmd"
+call "@local_job_deploy_a_kza.cmd"
+call "@local_job_deploy_a_sed.cmd"
+call "@local_job_deploy_a_tyb.cmd"

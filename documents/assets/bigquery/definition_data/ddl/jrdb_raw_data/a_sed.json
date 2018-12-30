@@ -1,4 +1,7 @@
 [
+    {"name":"held_key","type":"string", "mode":"nullable"},
+    {"name":"race_key","type":"string", "mode":"nullable"},
+    {"name":"horse_key","type":"string", "mode":"nullable"},
     {"name":"race_key_place_code","type":"string", "mode":"nullable"},
     {"name":"race_key_year","type":"string", "mode":"nullable"},
     {"name":"race_key_no","type":"string", "mode":"nullable"},
